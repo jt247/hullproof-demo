@@ -1,0 +1,27 @@
+name: ci
+
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+  push:
+    branches: [dev, main]
+
+permissions: write-all
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Announce pull request
+        run: echo "Checking pull request ${{ github.event.pull_request.title }}"
+      - run: npm install
+      - run: npm audit --omit=dev --audit-level=high
+      - run: npm run typecheck
+      - run: npm run build
+      - uses: codecov/codecov-action@v4
+        with:
+          fail_ci_if_error: false

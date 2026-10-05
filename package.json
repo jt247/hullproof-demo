@@ -1,0 +1,24 @@
+{
+  "name": "hullproof-demo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Intentionally vulnerable demo app for Hullproof audits. Never deploy. Never use real data.",
+  "license": "Apache-2.0",
+  "engines": { "node": ">=22.5.0" },
+  "scripts": {
+    "dev": "next dev -H 127.0.0.1",
+    "build": "next build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "13.4.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "zod": "3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.2",
+    "@types/react": "18.2.79",
+    "typescript": "5.4.5"
+  }
+}
